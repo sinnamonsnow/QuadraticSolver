@@ -1,0 +1,72 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	double quad,lin,cons,discrim,axis,vert,irrat;
+	cout<< "Enter for a, b, and c for the function f(x) = ax^2 + bx +c => ";
+	cin>> quad>>lin>>cons;
+	if(quad==0)
+		cout<<"ERROR: The co-effcient of the quadratic term must be non-zero"<<endl;
+	else
+	{
+		cout<<setprecision(3)<<fixed;
+		cout<<"\nQuadratic Function: f(x) = ";
+		if(quad>=1)
+		{
+			if(quad==1)
+				cout<<"x^2 ";
+			else cout<<quad<<"x^2 ";
+		}
+		else if(quad<=-1)
+		{
+			if(quad==-1)
+				cout<<"-x^2 ";
+			else cout<<quad<<"x^2 ";
+		}
+		if(lin!=0)
+			{
+				if(lin>=1)
+				{
+					if(lin==1)
+						cout<<"+ x";
+					else cout<<"+ "<<lin<<"x ";
+				}
+				else if(lin<=-1)
+				{
+					if(lin==-1)
+						cout<<"-x ";
+					else cout<<lin<<"x ";
+				}
+			}
+			if(cons!=0)
+			{
+				if(cons>=1)
+					cout<<"+ "<<cons<<endl;
+				else
+					cout<<cons<<endl;
+			}
+			discrim= pow(lin,2)-4*quad*cons;
+			axis=-lin/(2*quad);
+			vert=(-pow(lin,2)/(4*quad))+cons;
+			cout<<"\nDiscriminant: "<<discrim<<"\nAxis of Symmetry: x = "<<axis<<"\nVertex: ("<<axis<<", "<<vert<<")"<<"\ny-intercept: (0.000, "<<cons<<")\n"<<endl;
+			cout<<"The roots of the Equation f(x) = 0.000: x = {";
+			if(discrim==0)
+				cout<<axis<<"}"<<endl;
+			else if(discrim>0)
+			{
+				irrat= sqrt(discrim)/(2*quad);
+				cout<<axis+irrat<<" , "<<axis-irrat<<"}"<<endl;
+			}
+			else if(discrim<0)
+			{
+				irrat= sqrt(-discrim)/(2*quad);
+				if (axis!=0)
+					cout<<axis<<" + "<<abs(irrat)<<"i , "<<axis<<" - "<<abs(irrat)<<"i}"<<endl;
+				else
+					cout<<irrat<<"i , -"<<irrat<<"i}"<<endl;
+			}
+	}
+}
